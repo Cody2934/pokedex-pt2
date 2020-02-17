@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getPokemon} from './Api.js'
 import PokemonItem from './PokemonItem.js';
 
+
 export default class Detail extends Component {
     state = { pokemon: {} }
 
@@ -20,7 +21,9 @@ export default class Detail extends Component {
         const { pokemon } = this.state;
 
         return (
-            <PokemonItem pokemon={ pokemon } />
+            <div>
+                <PokemonItem pokemon={ pokemon } />
+            </div>
       );
     }
 }

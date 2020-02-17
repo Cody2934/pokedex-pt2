@@ -1,3 +1,5 @@
+// Everything gets sent to this page to display, kind of like an html page
+
 import React, { Component } from 'react';
 import { 
     Route, 
@@ -8,7 +10,6 @@ import {
 import Detail from './Detail';
 import Home from './Home';
 import About from './About.js';
-import NotFound from './NotFound.js';
 import './App.css';
 
 export default class App extends Component {
@@ -16,14 +17,13 @@ export default class App extends Component {
         return (
             <Router>
                 <div>
-                    <h2>Search for a Pokemon</h2>
-                    <Link to="/">Go Home</Link>
-                    <Link to="/about-me/some-other-param">About Thee</Link>
+                    <h1>Search for a Pokemon</h1>
+                    <Link to="/">Go Hometh</Link>
+                    <Link to="/about-thee/a">About Thee</Link>
                     <Switch>
-                        <Route exact path="/:name?" component={Home} />  
-                        <Route exact path="/about-me/:other/:thing/:here" component={About} />
-                        <Route exact path="/pokemon/:pokeId" component={Detail} />
-                        <Route component={NotFound}/>
+                        <Route exact path="/:name?" component={Home} /> 
+                        <Route path="/about-thee" component={About} />
+                        <Route path="/pokemon/:pokeId" component={Detail} />
                     </Switch>
 
                 </div>

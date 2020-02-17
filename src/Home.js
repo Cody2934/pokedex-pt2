@@ -12,7 +12,7 @@ export default class Home extends Component {
 
      async componentDidMount() {
          if (this.props.match.params.name) {
-             const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?name=${this.props.match.params.name}`)
+             const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.props.match.params.name}`)
      
              this.setState({ pokemons: data.body.results })
          }
@@ -21,7 +21,7 @@ export default class Home extends Component {
     handleSearch = async (e) => {
         e.preventDefault();
 
-        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?name=${this.state.searchQuery}`)
+        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`)
 
         this.setState({ 
             pokemons: data.body.results, })
@@ -34,6 +34,7 @@ export default class Home extends Component {
     handleChange = (e) => this.setState({ searchQuery: e.target.value })
 
     render() {
+        console.log(this.props.match.params)
         return (
         <div className="App">
           <header className="App-header">
@@ -46,7 +47,7 @@ export default class Home extends Component {
           <ul>
               {
                     this.state.pokemons.map(pokemon => 
-                    <Link to={`pokemons/${pokemon.name}`}> 
+                    <Link to={`pokemon/${pokemon.pokemon}`}> 
                         <PokemonItem pokemon={pokemon} />
                     </Link>)
               }
